@@ -30,12 +30,39 @@ extension Deck {
         self.type = type
     }
 
-    public func createDeck(suits:[Suit], values:[Value]) -> [Card] {
-        []
+    mutating public func createDeck(suits:[Suit], values:[Value]) -> [Card] {
+        
+        for value in values {
+            for suit in suits {
+                
+                let card = Card(suit: suit, value: value)
+                self.cards.append(card)
+                print(card)
+            }
+        }
+        return cards
     }
 
-    public func shuffle() {
-
+    public mutating func shuffle() {
+        var suits = [Suit]()
+        suits.append(Suit.clubs)
+        suits.append(Suit.diamonds)
+        suits.append(Suit.hearts)
+        suits.append(Suit.spades)
+        
+        var values = [Value]()
+        values.append(Value.six)
+        values.append(Value.seven)
+        values.append(Value.eight)
+        values.append(Value.nine)
+        values.append(Value.ten)
+        values.append(Value.jack)
+        values.append(Value.queen)
+        values.append(Value.king)
+        values.append(Value.ace)
+        
+        
+        self.createDeck(suits: suits, values: values)
     }
 
     public func defineTrump() {
